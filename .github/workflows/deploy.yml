@@ -3,7 +3,7 @@ name: Deploy HTML, CSS, JS
 on:
   push:
     branches:
-      - master  # This triggers the CI/CD pipeline when you push to 'master' branch
+      - main  # This triggers the CI/CD pipeline when you push to 'master' branch
 
 jobs:
   deploy:
