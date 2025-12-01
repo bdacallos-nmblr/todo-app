@@ -1,0 +1,20 @@
+name: Deploy HTML, CSS, JS
+
+on:
+  push:
+    branches:
+      - master  # This triggers the CI/CD pipeline when you push to 'master' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Deploy to Vercel (or Render)
+      - name: Deploy to Vercel
+        run: |
+          curl -fsSL https://vercel.com/download | bash  # Install Vercel CLI
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }}  # Use your Vercel token stored as GitHub secret
