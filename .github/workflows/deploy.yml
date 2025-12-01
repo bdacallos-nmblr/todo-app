@@ -13,8 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Deploy to Vercel (or Render)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Use the appropriate version of Node.js if needed
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel  # Install the Vercel CLI using npm
+
       - name: Deploy to Vercel
         run: |
-          curl -fsSL https://vercel.com/download | bash  # Install Vercel CLI
-          vercel --prod --token ${{ secrets.VERCEL_TOKEN }}  # Use your Vercel token stored as GitHub secret
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
